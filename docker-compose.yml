@@ -1,0 +1,25 @@
+version: '3'
+services:
+  project:
+    image: "odoo:15.0"
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    volumes:
+      - ./project:/mnt/project
+      - ./odoo.conf:/etc/odoo/odoo.conf
+      - ./project_utils:/mnt/project_utils
+      - ./backup:/var/lib/odoo/backups
+    stdin_open: true
+  db:
+    image: postgres:10
+    ports:
+      - "5432:5432"
+    environment:
+     - POSTGRES_DB=postgres
+     - POSTGRES_PASSWORD=odoo
+     - POSTGRES_USER=odoo
+    stdin_open: true
+    volumes:
+     - ./backposgresql:/var/lib/postgresql
