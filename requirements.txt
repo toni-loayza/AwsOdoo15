@@ -1,0 +1,11 @@
+pdf417gen==0.7.0
+numpy
+pandas
+pytesseract
+python-barcode
+xlrd
+phonenumbers
+simplejson
+ipdb
+paramiko
+raven
